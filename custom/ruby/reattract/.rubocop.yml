@@ -1,0 +1,51 @@
+require:
+  - rubocop-rake
+  - rubocop-rspec
+  - rubocop-performance
+
+# https://docs.rubocop.org/rubocop/configuration.html
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'Guardfile'
+    - 'reattract-api.gemspec'
+    - 'bin/**/*'
+
+Layout/LineLength:
+  Max: 120
+  AllowedPatterns: ['\A#'] # Ignore comments
+
+Layout/HashAlignment:
+  EnforcedColonStyle: table
+  EnforcedHashRocketStyle: table
+
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/ClassLength:
+  CountAsOne:
+    - heredoc
+    - hash
+    - array
+
+Metrics/ModuleLength:
+  CountAsOne:
+    - heredoc
+    - hash
+    - array
+
+Metrics/MethodLength:
+  Max: 20
+  CountAsOne:
+    - heredoc
+    - hash
+    - array
+
+Metrics/ParameterLists:
+  Max: 15
+
+RSpec/MultipleExpectations:
+  Max: 4
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 7
