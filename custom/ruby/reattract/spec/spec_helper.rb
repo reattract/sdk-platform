@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'reattract/api'
+require 'reattract'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

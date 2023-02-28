@@ -8,7 +8,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - 'Guardfile'
-    - 'reattract-api.gemspec'
+    - 'reattract.gemspec'
     - 'bin/**/*'
 
 Layout/LineLength:

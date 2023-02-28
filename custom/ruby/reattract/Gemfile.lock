@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    reattract_api (0.1.0)
+    reattract (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -99,7 +99,7 @@ DEPENDENCIES
   guard-rspec (~> 4.7)
   guard-rubocop (~> 1.5)
   rake (~> 13.0)
-  reattract_api!
+  reattract!
   rspec (~> 3.0)
   rubocop (~> 1.46)
   rubocop-performance (~> 1.16)
