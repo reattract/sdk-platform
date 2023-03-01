@@ -2,16 +2,11 @@
 
 module Reattract
   class Configuration
-    attr_accessor :public_key
-    attr_accessor :secret_key
-    attr_accessor :api_version
-    attr_accessor :api_host
-    attr_accessor :use_ssl
-    attr_accessor :port
+    attr_accessor :public_key, :secret_key, :api_version, :api_host, :use_ssl, :port
 
     def initialize
-      @api_host    = "https://api.reattract.io"
-      @api_version = "v1"
+      @api_host    = 'https://api.reattract.io'
+      @api_version = 'v1'
       @use_ssl     = true
     end
   end
