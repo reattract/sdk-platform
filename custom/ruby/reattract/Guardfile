@@ -73,3 +73,14 @@ guard :rubocop do
   watch(%r{.+\.rb$})
   watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
 end
+
+guard :kjell, cmd: 'bundle install' do
+  watch(%r{Gemfile$})
+  watch(%r{reattract.gemspec$})
+end
+
+guard :kjell, cmd: 'gem build reattract.gemspec' do
+  watch(%r{.+\.rb$})
+  watch(%r{Gemfile$})
+  watch(%r{reattract.gemspec$})
+end

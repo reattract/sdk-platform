@@ -1,41 +1,81 @@
 # frozen_string_literal: true
 
+require 'net/http'
+require 'pry'
+
 module Reattract
+  # Handles the construction of the connection object
   class Connection
-    class << self
-      def build(authorization:)
-        url = request_url
+    attr_reader :authorization, :resource_uri
 
-        Faraday.new(url: url) do |conn|
-          conn.headers['Content-Type']  = 'application/vnd.api+json'
-          conn.headers['Accept']        = 'application/vnd.api+json'
-          conn.headers['Authorization'] = authorization
+    def initialize(authorization:, path:)
+      @resource_uri = build_uri
+      @resource_uri.path += path
+      @authorization = authorization
+    end
 
-          conn.adapter Faraday.default_adapter
-        end
+    def get(query: {})
+      resource_uri.query = query.to_query
+      request = build_request(Net::HTTP::Get)
+
+      make_request(request)
+    end
+
+    def patch(body: {})
+      request = build_request(Net::HTTP::Patch, body: body)
+
+      make_request(request)
+    end
+
+    def put(body: {})
+      request = build_request(Net::HTTP::Put, body: body)
+
+      make_request(request)
+    end
+
+    def post(body: {})
+      request = build_request(Net::HTTP::Post, body: body)
+
+      make_request(request)
+    end
+
+    private
+
+    def make_request(request)
+      JSON.parse(client.request(request).body)
+    end
+
+    def build_request(method_class, body: nil)
+      method_class.new(resource_uri).tap do |request|
+        request['Content-Type']  = 'application/json'
+        request['Accept']        = 'application/json'
+        request['Authorization'] = authorization
+        request.body = body.to_json if body
       end
+    end
 
-      private
+    def client
+      Net::HTTP.new(resource_uri.host, resource_uri.port)
+    end
 
-      def request_url
-        attributes = { host: Reattract.api_host, path: Reattract.api_version }
+    def build_uri
+      attributes = { host: Reattract.api_host, path: Reattract.api_version }
 
-        attributes[:port] = configured_port if configured_port?
+      attributes[:port] = configured_port if configured_port?
 
-        uri_module.build(attributes).to_s
-      end
+      uri_module.build(attributes)
+    end
 
-      def configured_port?
-        !configured_port.zero?
-      end
+    def configured_port?
+      !configured_port.zero?
+    end
 
-      def configured_port
-        Reattract.port.to_i
-      end
+    def configured_port
+      Reattract.port.to_i
+    end
 
-      def uri_module
-        Reattract.use_ssl ? URI::HTTPS : URI::HTTP
-      end
+    def uri_module
+      Reattract.use_ssl ? URI::HTTPS : URI::HTTP
     end
   end
 end
