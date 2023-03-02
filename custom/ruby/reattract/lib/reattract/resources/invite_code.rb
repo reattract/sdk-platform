@@ -13,8 +13,9 @@ module Reattract
         )
       end
 
-      def list
+      def list(limit: 20, page: 1, order: ['id desc'])
         request.get(
+          sort:       order,
           pagination: {
             limit: limit,
             page:  page
