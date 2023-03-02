@@ -7,6 +7,9 @@ require_relative 'reattract/configuration'
 require_relative 'reattract/jwt_generator'
 require_relative 'reattract/connection'
 require_relative 'reattract/request'
+require_relative 'reattract/resources/app_event'
+require_relative 'reattract/resources/customer'
+require_relative 'reattract/resources/invite_code'
 require_relative 'reattract/resources/invite_conversion'
 
 # Core reattract module. Enables connection to the reattract API
