@@ -4,11 +4,11 @@ module Reattract
   # /v1/referral_attributions
   class InviteConversion
     class << self
-      def create(user_id:, unique_code: nil)
+      def create(user_id:, invite_code: nil)
         request.post(
           body: {
             organization_user_id: user_id,
-            unique_code:          unique_code
+            unique_code:          invite_code
           }
         )
       end
