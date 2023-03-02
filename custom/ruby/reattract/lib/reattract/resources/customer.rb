@@ -1,19 +1,18 @@
 # frozen_string_literal: true
 
 module Reattract
-  # /v1/customer_codes
-  class InviteCode
+  # /v1/organization_customers
+  class Customer
     class << self
-      def create(user_id:, campaign_id:)
+      def create(user_id:)
         request.post(
           body: {
-            organization_user_id: user_id,
-            campaign_id:          campaign_id
+            organization_user_id: user_id
           }
         )
       end
 
-      def list
+      def list(limit: 20, page: 1)
         request.get(
           pagination: {
             limit: limit,
@@ -25,7 +24,7 @@ module Reattract
       private
 
       def request
-        Reattract::Request.new(path: '/customer_codes')
+        Reattract::Request.new(path: '/organization_customers')
       end
     end
   end

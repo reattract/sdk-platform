@@ -13,8 +13,13 @@ module Reattract
         )
       end
 
-      def list
-        request.get
+      def list(limit: 20, page: 1)
+        request.get(
+          pagination: {
+            limit: limit,
+            page:  page
+          }
+        )
       end
 
       private

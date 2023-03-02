@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'net/http'
-require 'pry'
 
 module Reattract
   # Handles the construction of the connection object
@@ -42,7 +41,25 @@ module Reattract
     private
 
     def make_request(request)
-      JSON.parse(client.request(request).body)
+      parse_response(client.request(request))
+    end
+
+    def parse_response(response)
+      pagination = extract_pagination(response)
+      JSON.parse(response.body, symbolize_names: true).tap do |parsed_response|
+        parsed_response[:pagination] = pagination if pagination
+      end
+    end
+
+    def extract_pagination(response)
+      return if response['Page-Items'].nil?
+
+      {
+        page_items:   response['Page-Items'],
+        current_page: response['Current-Page'],
+        total_pages:  response['Total-Pages'],
+        total_count:  response['Total-Count']
+      }
     end
 
     def build_request(method_class, body: nil)

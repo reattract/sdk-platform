@@ -12,7 +12,11 @@ module Reattract
       )
     end
 
-    def get(query: {})
+    def get(query: {}, pagination: nil)
+      if pagination
+        query[:page]  = pagination[:page]
+        query[:limit] = pagination[:limit]
+      end
       connection.get(query: query)
     end
 
