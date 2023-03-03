@@ -55,10 +55,10 @@ module Reattract
       return if response['Page-Items'].nil?
 
       {
-        page_items:   response['Page-Items'],
-        current_page: response['Current-Page'],
-        total_pages:  response['Total-Pages'],
-        total_count:  response['Total-Count']
+        page_items:   response['Page-Items'].to_i,
+        current_page: response['Current-Page'].to_i,
+        total_pages:  response['Total-Pages'].to_i,
+        total_count:  response['Total-Count'].to_i
       }
     end
 
