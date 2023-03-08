@@ -12,6 +12,7 @@ require_relative 'reattract/resources/campaign'
 require_relative 'reattract/resources/customer'
 require_relative 'reattract/resources/invite_code'
 require_relative 'reattract/resources/invite_conversion'
+require_relative 'reattract/resources/invite_session'
 
 # Core reattract module. Enables connection to the reattract API
 module Reattract
