@@ -4,8 +4,8 @@ module Reattract
   # /v1/customer_codes
   class InviteCode
     class << self
-      def create(user_id:, campaign_id:)
-        request.post(
+      def create(user_id:, campaign_id: nil)
+        collection_request.post(
           body: {
             organization_user_id: user_id,
             campaign_id:          campaign_id
@@ -14,7 +14,7 @@ module Reattract
       end
 
       def list(limit: 20, page: 1, order: ['id desc'])
-        request.get(
+        collection_request.get(
           sort:       order,
           pagination: {
             limit: limit,
@@ -25,8 +25,12 @@ module Reattract
 
       private
 
-      def request
+      def collection_request
         Reattract::Request.new(path: '/customer_codes')
+      end
+
+      def member_request(user_id:)
+        Reattract::Request.new(path: "/customer_codes/#{user_id}")
       end
     end
   end

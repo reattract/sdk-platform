@@ -6,17 +6,18 @@ module Reattract
     class << self
       def create(user_id:, **kwargs)
         collection_request.post(
-          body: {
-            organization_user_id: user_id,
-            **kwargs
-          }
+          body: kwargs.merge(organization_user_id: user_id)
         )
       end
 
       def update(user_id:, **kwargs)
-        member_request(id: user_id).patch(
+        member_request(user_id:).patch(
           body: kwargs
         )
+      end
+
+      def get(user_id:)
+        member_request(user_id:).get
       end
 
       def list(limit: 20, page: 1, order: ['id desc'])
@@ -35,8 +36,8 @@ module Reattract
         Reattract::Request.new(path: '/organization_customers')
       end
 
-      def member_request(id:)
-        Reattract::Request.new(path: "/organization_customers/#{id}")
+      def member_request(user_id:)
+        Reattract::Request.new(path: "/organization_customers/#{user_id}")
       end
     end
   end
