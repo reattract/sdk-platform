@@ -7,10 +7,10 @@ module Reattract
       def create(user_id:, invite_code: nil, invite_session_id: nil, customer: {})
         request.post(
           body: {
-            organization_user_id: user_id,
-            unique_code:          invite_code,
-            referral_session_id:  invite_session_id,
-            organization_customer: customer,
+            organization_user_id:  user_id,
+            unique_code:           invite_code,
+            referral_session_id:   invite_session_id,
+            organization_customer: customer
           }
         )
       end

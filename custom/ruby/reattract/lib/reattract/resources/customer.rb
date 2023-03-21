@@ -11,13 +11,13 @@ module Reattract
       end
 
       def update(user_id:, **kwargs)
-        member_request(user_id:).patch(
+        member_request(user_id: user_id).patch(
           body: kwargs
         )
       end
 
       def get(user_id:)
-        member_request(user_id:).get
+        member_request(user_id: user_id).get
       end
 
       def list(limit: 20, page: 1, order: ['id desc'])

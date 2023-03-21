@@ -45,6 +45,8 @@ module Reattract
     end
 
     def parse_response(response)
+      return if response.body.empty?
+
       pagination = extract_pagination(response)
       JSON.parse(response.body, symbolize_names: true).tap do |parsed_response|
         parsed_response[:pagination] = pagination if pagination

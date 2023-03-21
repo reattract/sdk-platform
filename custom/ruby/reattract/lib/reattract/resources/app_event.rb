@@ -4,9 +4,13 @@ module Reattract
   # /v1/customer_events
   class AppEvent
     class << self
-      def create(payload:)
+      def create(event_name:, user_id:, payload: {})
         request.post(
-          body: { payload: payload }
+          body: {
+            payload:              payload,
+            event_name:           event_name,
+            organization_user_id: user_id
+          }
         )
       end
 
