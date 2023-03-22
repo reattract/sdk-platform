@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    reattract (0.3.2)
+    reattract (0.3.3)
       jwt (~> 2.7.0)
 
 GEM
