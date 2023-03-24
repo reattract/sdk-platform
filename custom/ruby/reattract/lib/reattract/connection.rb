@@ -74,7 +74,9 @@ module Reattract
     end
 
     def client
-      Net::HTTP.new(resource_uri.host, resource_uri.port)
+      Net::HTTP.new(resource_uri.host, resource_uri.port).tap do |http|
+        http.use_ssl = true if Reattract.use_ssl
+      end
     end
 
     def build_uri
