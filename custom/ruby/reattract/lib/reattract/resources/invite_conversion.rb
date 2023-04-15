@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Reattract
-  # /v1/referral_attributions
+  # /v1/invite_conversions
   class InviteConversion
     class << self
       def create(user_id:, invite_code: nil, invite_session_id: nil, customer: {})
@@ -9,7 +9,7 @@ module Reattract
           body: {
             organization_user_id:  user_id,
             unique_code:           invite_code,
-            referral_session_id:   invite_session_id,
+            invite_session_id:   invite_session_id,
             organization_customer: customer
           }
         )
@@ -28,7 +28,7 @@ module Reattract
       private
 
       def request
-        Reattract::Request.new(path: '/referral_attributions')
+        Reattract::Request.new(path: '/invite_conversions')
       end
     end
   end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Reattract
-  # /v1/customer_codes
+  # /v1/invite_sessions
   class InviteSession
     class << self
       def get(id:)
