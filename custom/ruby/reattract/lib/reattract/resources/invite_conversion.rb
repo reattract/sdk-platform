@@ -9,7 +9,7 @@ module Reattract
           body: {
             organization_user_id:  user_id,
             unique_code:           invite_code,
-            invite_session_id:   invite_session_id,
+            invite_session_id:     invite_session_id,
             organization_customer: customer
           }
         )
