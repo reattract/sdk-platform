@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Reattract
-  # /v1/customer_codes
+  # /v1/invite_codes
   class InviteCode
     class << self
       def create(user_id:, campaign_id: nil)
@@ -26,11 +26,11 @@ module Reattract
       private
 
       def collection_request
-        Reattract::Request.new(path: '/customer_codes')
+        Reattract::Request.new(path: '/invite_codes')
       end
 
       def member_request(user_id:)
-        Reattract::Request.new(path: "/customer_codes/#{user_id}")
+        Reattract::Request.new(path: "/invite_codes/#{user_id}")
       end
     end
   end
