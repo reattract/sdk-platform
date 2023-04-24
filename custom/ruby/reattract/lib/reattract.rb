@@ -2,11 +2,16 @@
 
 require 'forwardable'
 
+require_relative 'reattract/active_support_include'
+require_relative 'reattract/reattract_error'
 require_relative 'reattract/version'
 require_relative 'reattract/configuration'
 require_relative 'reattract/jwt_generator'
 require_relative 'reattract/connection'
 require_relative 'reattract/request'
+require_relative 'reattract/webhook'
+
+# resources
 require_relative 'reattract/resources/app_event'
 require_relative 'reattract/resources/campaign'
 require_relative 'reattract/resources/customer'

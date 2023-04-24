@@ -10,6 +10,9 @@ AllCops:
     - 'Guardfile'
     - 'reattract.gemspec'
     - 'bin/**/*'
+    - 'spec/reattract/webhoook_spec.rb' # rebranded
+    - 'lib/reattract/webhook.rb' # rebranded
+    - 'lib/reattract/active_support_include.rb' # rebranded
 
 Layout/LineLength:
   Max: 120

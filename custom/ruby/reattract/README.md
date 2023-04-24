@@ -1,18 +1,16 @@
-# Reattract
+# Reattract Ruby SDK
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/reattract/api`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Reattract's ruby API
 
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add reattract_api
+    $ bundle add reattract
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install reattract_api
+    $ gem install reattract
 
 ## Usage
 
@@ -26,7 +24,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/reattract.
+Bug reports and pull requests are welcome on GitHub at https://github.com/reattract/sdk-platform.
 
 ## License
 
